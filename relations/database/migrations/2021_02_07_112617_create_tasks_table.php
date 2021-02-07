@@ -20,6 +20,8 @@ class CreateTasksTable extends Migration
             $table->string('description', 200);
             $table->integer('priority')->unsigned();
 
+            $table->bigInteger('employee_id') -> unsigned(); //tasks è la chiave esterna a cui associamo l'id dell'employee
+
             $table->timestamps();
         });
     }
