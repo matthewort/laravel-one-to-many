@@ -12,6 +12,11 @@ class TaskSeeder extends Seeder
      */
     public function run()
     {
-        factory(Task::class, 50) -> create();  //il 50 è riferito al numero di employee che mi interessa avere nella tabella
+        factory(Task::class, 50)
+        -> make()
+        -> each(function($task) {
+            $task -> employee_id = 100;
+            $task -> save();
+        });   
     }
 }

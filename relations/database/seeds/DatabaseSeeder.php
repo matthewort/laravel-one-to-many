@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            EmployeeSeeder::class,
-            TaskSeeder::class
+            EmployeeSeeder::class, //va inserito prima l'elemento che non ha chiave esterna
+            TaskSeeder::class,
           ]); //non ho capito cosa faccia
     }
 }
