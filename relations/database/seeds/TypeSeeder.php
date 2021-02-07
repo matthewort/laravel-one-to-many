@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Task;
 use App\Type;
 class TypeSeeder extends Seeder
 {
@@ -11,6 +12,12 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Type::class, 50) -> create();
+        factory(Type::class, 50) 
+        -> create()
+        -> each(function($type) {
+            $tasks = Task::inRandomOrder()
+            -> limit(rand(1, 5)) -> get();
+            $type -> tasks() -> attach($tasks);
+        });
     }
 }

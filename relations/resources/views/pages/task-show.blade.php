@@ -11,4 +11,10 @@
     {{$task -> description}}
 </span>
 {{-- stampo a schermo un employee per ciascuna task --}}
+    @foreach ($task -> types as $type)
+        <li>
+            {{$type -> name}} <br>
+            {{$type -> description}}
+        </li>
+    @endforeach 
 @endsection
