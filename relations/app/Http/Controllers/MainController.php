@@ -23,11 +23,11 @@ class MainController extends Controller
 
     public function taskIndex() {
         $tasks = Task::all();
-        return view('pages.tasks-index', compact('tasks'));
+        return view('pages.task-index', compact('tasks'));
     }
 
     public function taskShow($id) {
         $task = Task::findOrFail($id);
-        return view('pages.tasks-show', compact('task'));
+        return view('pages.task-show', compact('task'));
     }
 }

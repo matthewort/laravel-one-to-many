@@ -17,12 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// ROUTE EMPLOYEES
 Route::get('/emps', 'MainController@empIndex') //il nome della funzione dell'index (in questo caso empIndex deve essere identica a quella che inseriamo nel MainController ovviamente)
 -> name('emp-index');
 Route::get('/emp/{id}', 'MainController@empShow')
 -> name('emp-show');
 
+// ROUTE TASKS
 Route::get('/tasks', 'MainController@taskIndex')
--> name('tasks-index');
+-> name('task-index');
 Route::get('/task/{id}', 'MainController@taskShow') 
--> name('tasks-show');
+-> name('task-show');

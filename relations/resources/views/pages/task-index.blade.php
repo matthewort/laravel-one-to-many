@@ -4,7 +4,11 @@
     <ul>
         @foreach ($tasks as $task)
 
-        <li>{{ $task -> title }}</li>
+        <li>
+            <a href="{{route('task-show', $task -> id)}}">
+                {{ $task -> title }}
+            </a>
+        </li>
 
         @endforeach
     </ul>
