@@ -12,7 +12,7 @@ class Employee extends Model
         'date_of_birth',
     ];
 
-    public function employee() {
-        return $this -> belongsTo(Employee::class);
+    public function tasks() {
+        return $this -> hasMany(Task::class); //un employee può fare diverse task
     }
 }

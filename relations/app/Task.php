@@ -12,7 +12,7 @@ class Task extends Model
         'priority',
     ];
 
-    public function tasks() {
-        return $this -> hasMany(Task::class);
+    public function employee() {
+        return $this -> belongsTo(Employee::class); //per ogni task c'è un solo employee
     }
 }
