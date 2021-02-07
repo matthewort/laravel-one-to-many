@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EmployeeSeeder::class, //va inserito prima l'elemento che non ha chiave esterna
             TaskSeeder::class,
+            TypeSeeder::class,
           ]); //non ho capito cosa faccia
     }
 }

@@ -15,4 +15,8 @@ class Task extends Model
     public function employee() {
         return $this -> belongsTo(Employee::class); //per ogni task c'è un solo employee
     }
+
+    public function tasks() {
+        return $this -> belongsToMany(Type::class);
+    }
 }
