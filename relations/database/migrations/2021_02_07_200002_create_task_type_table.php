@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypesTable extends Migration
+class CreateTaskTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('task_type', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 100);
-            $table->string('description', 100);
+            $table -> bigInteger('task_id') -> unsigned();
+            $table -> bigInteger('type_id') -> unsigned();
 
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('task_type');
     }
 }
