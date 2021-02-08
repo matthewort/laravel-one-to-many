@@ -35,7 +35,8 @@ class MainController extends Controller
     }
 
     public function taskCreate() {
-        return view('pages.task-create');
+        $emps = Employee::all();
+        return view('pages.task-create', compact('emps'));
     }
 
     //TYPES
