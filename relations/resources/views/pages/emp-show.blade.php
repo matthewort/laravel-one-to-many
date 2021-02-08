@@ -7,11 +7,19 @@
 </h1>
 
 <ul>
+    <h2>Tasks:</h2>
     @foreach ($emp -> tasks as $task) 
     <li>
-        [{{$task -> priority}}]:
-        {{$task -> title}}<br>
-        {{$task -> description}}
+        Task: {{ $task -> title }}
+        <ul> 
+            @foreach ($task -> types as $type)
+                <li>
+                    <a href="{{route('type-show', $type -> id)}}">
+                     Type: {{ $type -> name }} 
+                    </a> 
+                </li>
+            @endforeach
+        </ul>
     </li>
     @endforeach
     {{-- creo un foreach per collegare gli employee alle task --}}

@@ -11,9 +11,9 @@ class AddForeignKeys extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() //crea la migration
     {
-        Schema::table('tasks', function (Blueprint $table) {
+        Schema::table('tasks', function (Blueprint $table) { //il motivo di tasks?
             $table -> foreign('employee_id', 'task-employee') //'task-employee' è un nome che decido per la foreign key
                    -> references('id')
                    -> on('employees'); 

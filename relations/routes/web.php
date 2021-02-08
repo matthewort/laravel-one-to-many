@@ -28,3 +28,9 @@ Route::get('/tasks', 'MainController@taskIndex')
 -> name('task-index');
 Route::get('/task/{id}', 'MainController@taskShow') 
 -> name('task-show');
+
+// ROUTE TYPES
+Route::get('/types', 'MainController@typeIndex')
+-> name('type-index');
+Route::get('/type/{id}', 'MainController@typeShow') 
+-> name('type-show');

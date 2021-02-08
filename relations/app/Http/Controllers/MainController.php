@@ -4,10 +4,12 @@
 namespace App\Http\Controllers;
 use App\Employee;
 use App\Task;
+use App\Type;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+    // EMPLOYEES
     public function empIndex() {
         $emps = Employee::all(); //cosa vuol dire Employee:all?
 	    // dd($employees); //può aiutarci per vedere i nomi degli elementi che vogliamo estrarre, una volta scritta la return view possiamo eliminarlo
@@ -21,6 +23,7 @@ class MainController extends Controller
         // dd($employee);
     }
 
+    // TASKS
     public function taskIndex() {
         $tasks = Task::all();
         return view('pages.task-index', compact('tasks'));
@@ -29,5 +32,16 @@ class MainController extends Controller
     public function taskShow($id) {
         $task = Task::findOrFail($id);
         return view('pages.task-show', compact('task'));
+    }
+
+    //TYPES
+    public function typeIndex() {
+        $type = Type::all();
+        return view('pages.type-index', compact('types'));
+    }   
+
+    public function typeShow($id) {
+        $type = Type::findOrFail($id);
+        return view('pages.type-show', compact('type'));
     }
 }

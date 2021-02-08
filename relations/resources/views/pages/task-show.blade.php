@@ -13,8 +13,10 @@
 {{-- stampo a schermo un employee per ciascuna task --}}
     @foreach ($task -> types as $type)
         <li>
+            <a href="{{route('type-show', $type -> id)}}">
             {{$type -> name}} <br>
             {{$type -> description}}
+            </a> 
         </li>
     @endforeach 
 @endsection

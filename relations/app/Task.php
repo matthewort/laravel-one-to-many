@@ -12,11 +12,11 @@ class Task extends Model
         'priority',
     ];
 
-    public function employee() {
+    public function employee() { //le funzioni devono coincidere? Ad es. perché employee e non employees?
         return $this -> belongsTo(Employee::class); //per ogni task c'è un solo employee
     }
 
-    public function tasks() {
+    public function types() {
         return $this -> belongsToMany(Type::class);
     }
 }

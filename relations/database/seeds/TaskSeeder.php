@@ -18,7 +18,7 @@ class TaskSeeder extends Seeder
         -> each(function($task) {
             // $task -> employee_id = 1;
             $emp = Employee::inRandomOrder() -> first();
-            $task -> employee() -> associate($emp);
+            $task -> employee() -> associate($emp); //perché associate non attach?
             $task -> save();
         });   
     }

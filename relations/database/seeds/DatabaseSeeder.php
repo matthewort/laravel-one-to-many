@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class, //va inserito prima l'elemento che non ha chiave esterna
             TaskSeeder::class,
             TypeSeeder::class,
-          ]); //non ho capito cosa faccia
+          ]); //non ho capito cosa faccia il database seeder
     }
 }
