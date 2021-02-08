@@ -26,6 +26,8 @@ Route::get('/emp/{id}', 'MainController@empShow')
 // ROUTE TASKS
 Route::get('/tasks', 'MainController@taskIndex')
 -> name('task-index');
+Route::get('/task/create', 'MainController@taskCreate') 
+-> name('task-create');
 Route::get('/task/{id}', 'MainController@taskShow') 
 -> name('task-show');
 

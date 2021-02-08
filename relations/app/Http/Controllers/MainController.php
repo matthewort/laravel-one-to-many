@@ -34,9 +34,13 @@ class MainController extends Controller
         return view('pages.task-show', compact('task'));
     }
 
+    public function taskCreate() {
+        return view('pages.task-create');
+    }
+
     //TYPES
     public function typeIndex() {
-        $type = Type::all();
+        $types = Type::all();
         return view('pages.type-index', compact('types'));
     }   
 
