@@ -1,7 +1,10 @@
 @extends('layouts.main-layout')
 @section('content')
 <h1>NEW TASK</h1>
-<form action="">
+<form action="{{route('task-store')}}" method="POST">
+
+    @csrf
+    @method('POST')
 
     <label for="title">Title</label>
     <input name="title" type="text">

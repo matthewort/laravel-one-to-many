@@ -39,6 +39,11 @@ class MainController extends Controller
         return view('pages.task-create', compact('emps'));
     }
 
+    public function taskStore(Request $request) {
+        $data = $request -> all();
+        dd($data);
+    }
+
     //TYPES
     public function typeIndex() {
         $types = Type::all();
