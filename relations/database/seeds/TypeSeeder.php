@@ -12,7 +12,7 @@ class TypeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Type::class, 50) 
+        factory(Type::class, 10) 
         -> create()
         -> each(function($type) {
             $tasks = Task::inRandomOrder()

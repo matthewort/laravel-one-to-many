@@ -27,7 +27,14 @@
         </option>
         @endforeach
     </select>
+    <br>
+    <br>
+    <label for="types[]">Typologies</label><br>
+    @foreach ($types as $type)
+    <input name="types[]" type="checkbox" value="{{$type -> id}}"> {{$type -> name}} <br>
+    @endforeach
+    <br>
+    <input type="submit" value="SAVE">
 
-    <input type="submit">
 </form>
 @endsection

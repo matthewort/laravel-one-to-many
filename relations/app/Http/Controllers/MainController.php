@@ -36,12 +36,17 @@ class MainController extends Controller
 
     public function taskCreate() {
         $emps = Employee::all();
-        return view('pages.task-create', compact('emps'));
+        $types = Type::all();
+        return view('pages.task-create', compact('emps', 'types'));
     }
 
     public function taskStore(Request $request) {
         $data = $request -> all();
-        dd($data);
+
+        $emp = Employee::findOrFail($data['employee_id']);
+        $task = Task::make($request -> all());
+        $task = employee() -> associate($emp); //errore
+        $task -> save();
     }
 
     //TYPES
