@@ -47,6 +47,18 @@ class MainController extends Controller
         $task = Task::make($request -> all());
         $task = employee() -> associate($emp); //errore
         $task -> save();
+
+        $typs = Type::findOrFail($data['types']);
+        $task -> types() -> attach($typs);
+        dd($task);
+
+    }
+
+    public function taskEdit($id) {
+        $emps = Employee::all();
+        $types = Type::all();
+        $task = Task::findOrFail($id);
+        return view('pages.task-edit', compact('task'));
     }
 
     //TYPES
