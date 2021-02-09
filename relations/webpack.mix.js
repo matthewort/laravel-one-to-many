@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js("resources/js/app.js", "public/js")
+    .sass("resources/sass/app.scss", "public/css")
+    .browserSync({
+        //questo browserSync fa in modo che quando lancio i terminali, l'npm run watch eseguirà dei procedimenti aggiuntivi, una volta fatto lo rilanciamo di nuovo. Fatto questo scriviamo localhost:3000 invece di 8000 nell'URL, e questo farà in modo che quando salviamo si aggiorni automaticamente l'output del front-end su browser senza che riaggiorniamo la pagina
+        proxy: "127.0.0.1:8000",
+        notify: false,
+        open: false
+    });

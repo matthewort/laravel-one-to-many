@@ -63,17 +63,6 @@ class MainController extends Controller
         compact('emps', 'types', 'task'));
     }
 
-    //TYPES
-    public function typeIndex() {
-        $types = Type::all();
-        return view('pages.type-index', compact('types'));
-    }   
-
-    public function typeShow($id) {
-        $type = Type::findOrFail($id);
-        return view('pages.type-show', compact('type'));
-    }
-
     public function taskUpdate(Request $request, $id) {
         $data = $request -> all();
         // dd($data);
@@ -87,5 +76,16 @@ class MainController extends Controller
         $typs = Type::findOrFail($data['types']);
         $task -> types() -> sync($typs); //col sync posso rimuovere e aggiungere dati, ma non mi funziona
         }
+    }
+
+    //TYPES
+    public function typeIndex() {
+        $types = Type::all();
+        return view('pages.type-index', compact('types'));
+    }   
+
+    public function typeShow($id) {
+        $type = Type::findOrFail($id);
+        return view('pages.type-show', compact('type'));
     }
 }
