@@ -45,7 +45,7 @@ class MainController extends Controller
 
         $emp = Employee::findOrFail($data['employee_id']);
         $task = Task::make($request -> all());
-        $task = employee() -> associate($emp); //errore
+        $task = employee() -> associate($emp); //errore (se provo a creare una nuova task mi dà errore)
         $task -> save();
 
         $typs = Type::findOrFail($data['types']);
@@ -57,8 +57,11 @@ class MainController extends Controller
     public function taskEdit($id) {
         $emps = Employee::all();
         $types = Type::all();
+
         $task = Task::findOrFail($id);
-        return view('pages.task-edit', compact('task'));
+
+        return view('pages.task-edit', 
+        compact('emps', 'types', 'task'));
     }
 
     //TYPES
@@ -70,5 +73,10 @@ class MainController extends Controller
     public function typeShow($id) {
         $type = Type::findOrFail($id);
         return view('pages.type-show', compact('type'));
+    }
+
+    public function update(Request $request, $id) {
+        $data = $request -> id;
+        $task = Task::findOrFail($id);
     }
 }
