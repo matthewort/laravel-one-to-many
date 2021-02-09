@@ -51,6 +51,8 @@ Route::post('/type/store', 'MainController@typeStore')
 
 Route::get('/type/edit/{id}', 'MainController@typeEdit') 
 -> name('type-edit');
+Route::post('/type/update/{id}', 'MainController@typeUpdate') 
+-> name('type-update');
 
 Route::get('/type/{id}', 'MainController@typeShow') 
 -> name('type-show');

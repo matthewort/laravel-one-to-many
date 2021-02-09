@@ -108,4 +108,19 @@ class MainController extends Controller
         $type = Type::findOrFail($id);
         return view('pages.type-edit', compact('tasks','type'));
     }
+
+    public function typeUpdate(Request $request, $id) {
+        $data = $request -> all();
+        $type = Type::findOrFail($id);
+        $type -> update($data);
+
+        if (array_key_exists('tasks', $data)) {
+        $tasks = Task::findOrFail($data['tasks']);
+        $type -> tasks() -> sync($tasks);
+        } else {
+            $type -> tasks() -> sync([]);
+        }
+
+        return redirect() -> route('type-show', $type -> id); //non capisco perché qua mettiamo la return mentre nel taskUpdate no
+    }
 }
