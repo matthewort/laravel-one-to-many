@@ -14,7 +14,6 @@ class MainController extends Controller
         $emps = Employee::all(); //cosa vuol dire Employee:all?
 	    // dd($employees); //può aiutarci per vedere i nomi degli elementi che vogliamo estrarre, una volta scritta la return view possiamo eliminarlo
         return view('pages.emp-index', compact('emps'));  //perché non scrivere direttamente $employees? Il compact farà sì che all'interno della nostra View abbiamo la variabile $brands nel PHP
-        
     }
 
     public function empShow($id) {
@@ -45,12 +44,12 @@ class MainController extends Controller
 
         $emp = Employee::findOrFail($data['employee_id']);
         $task = Task::make($request -> all());
-        $task = employee() -> associate($emp); //errore (se provo a creare una nuova task mi dà errore)
+        $task -> employee() -> associate($emp); //errore (se provo a creare una nuova task mi dà errore)
         $task -> save();
 
         $typs = Type::findOrFail($data['types']);
-        $task -> types() -> attach($typs);
-        dd($task);
+        $task -> types() -> attach($typs);  //aggiungo le righe senza eliminare le relazioni non selezionate
+        // dd($task);
 
     }
 
@@ -75,8 +74,18 @@ class MainController extends Controller
         return view('pages.type-show', compact('type'));
     }
 
-    public function update(Request $request, $id) {
-        $data = $request -> id;
+    public function taskUpdate(Request $request, $id) {
+        $data = $request -> all();
+        // dd($data);
+        $emp = Employee::findOrFail($data['employee_id']);
         $task = Task::findOrFail($id);
+        $task -> update($data); //aggiorno i dati
+        $task -> employee() -> associate($emp);
+        $task -> save();
+        
+        if (array_key_exists('types', $data)) {
+        $typs = Type::findOrFail($data['types']);
+        $task -> types() -> sync($typs); //col sync posso rimuovere e aggiungere dati, ma non mi funziona
+        }
     }
 }
