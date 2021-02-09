@@ -70,12 +70,13 @@ class MainController extends Controller
         $task = Task::findOrFail($id);
         $task -> update($data); //aggiorno i dati
         $task -> employee() -> associate($emp);
-        $task -> save();
+        
         
         if (array_key_exists('types', $data)) {
         $typs = Type::findOrFail($data['types']);
         $task -> types() -> sync($typs); //col sync posso rimuovere e aggiungere dati, ma non mi funziona
         }
+        $task -> save();
     }
 
     //TYPES
@@ -87,5 +88,10 @@ class MainController extends Controller
     public function typeShow($id) {
         $type = Type::findOrFail($id);
         return view('pages.type-show', compact('type'));
+    }
+
+    public function typeCreate() {
+        $tasks = Task::all();
+        return view('pages.type-create', compact('tasks'));
     }
 }

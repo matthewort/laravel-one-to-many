@@ -43,5 +43,9 @@ Route::get('/task/{id}', 'MainController@taskShow')
 // ROUTE TYPES
 Route::get('/types', 'MainController@typeIndex')
 -> name('type-index');
+Route::get('/type/create', 'MainController@typeCreate') 
+-> name('type-create');
+
 Route::get('/type/{id}', 'MainController@typeShow') 
 -> name('type-show');
+
