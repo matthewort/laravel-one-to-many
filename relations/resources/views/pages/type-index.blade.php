@@ -10,6 +10,7 @@
         <a href="{{route('type-show', $type -> id)}}">
         {{$type -> name}}
         </a>
+        <a href="{{route('type-edit', $type -> id)}}">EDIT</a>
     </li>
     
     @endforeach

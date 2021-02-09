@@ -3,12 +3,13 @@
 <h1>
     {{$type -> name}}
 </h1>
+<span>Description: {{$type -> description}}</span>
 <ul>
     @foreach ($type -> tasks as $task)
     <li>
-        {{$task -> title}}
-        {{$task -> description}}
-        {{$task -> priority}}
+        {{$task -> employee -> name}}
+        {{$task -> employee -> name}}
+        {{$task -> name}}
     </li>
     
     @endforeach

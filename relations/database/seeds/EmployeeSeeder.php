@@ -11,6 +11,6 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        factory(Employee::class, 50) -> create();  //il 50 è riferito al numero di employee che mi interessa avere nella tabella
+        factory(Employee::class, 10) -> create();  //il 50 è riferito al numero di employee che mi interessa avere nella tabella
     }
 }

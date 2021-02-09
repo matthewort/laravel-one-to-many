@@ -42,7 +42,7 @@ class MainController extends Controller
     public function taskStore(Request $request) {
         $data = $request -> all();
 
-        $emp = Employee::findOrFail($data['employee_id']);
+        $emp = Employee::findOrFail($data['employee_id']); //mi dà errore dicendomi "undefined index: employee_id" se provo a creare una nuova typology in type/create
         $task = Task::make($request -> all());
         $task -> employee() -> associate($emp); //errore (se provo a creare una nuova task mi dà errore)
         $task -> save();
@@ -93,5 +93,19 @@ class MainController extends Controller
     public function typeCreate() {
         $tasks = Task::all();
         return view('pages.type-create', compact('tasks'));
+    }
+
+    public function typeStore(Request $request) {
+        $data = $request -> all();
+        $newType = Type::create($data);
+        $tasks = Task::findOrFail($data['tasks']);
+        $newType -> tasks() -> attach($tasks);
+        return redirect() -> route('type-show', $newType -> id);
+    }
+
+    public function typeEdit($id) {
+        $tasks = Task::all();
+        $type = Type::findOrFail($id);
+        return view('pages.type-edit', compact('tasks','type'));
     }
 }

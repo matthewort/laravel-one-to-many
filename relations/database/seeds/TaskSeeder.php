@@ -13,7 +13,7 @@ class TaskSeeder extends Seeder
      */
     public function run()
     {
-        factory(Task::class, 50)
+        factory(Task::class, 15)
         -> make()
         -> each(function($task) {
             // $task -> employee_id = 1;
