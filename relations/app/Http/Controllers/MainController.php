@@ -2,10 +2,14 @@
 
 
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 use App\Employee;
 use App\Task;
 use App\Type;
-use Illuminate\Http\Request;
+
 
 class MainController extends Controller
 {
@@ -111,15 +115,19 @@ class MainController extends Controller
 
     public function typeUpdate(Request $request, $id) {
         $data = $request -> all();
+        Validator::make($data, [
+            'name' => 'required|min:5|max:15',
+        ]) -> validate();
+        
         $type = Type::findOrFail($id);
         $type -> update($data);
 
         if (array_key_exists('tasks', $data)) {
         $tasks = Task::findOrFail($data['tasks']);
-        $type -> tasks() -> sync($tasks);
         } else {
-            $type -> tasks() -> sync([]);
+            $tasks = [];
         }
+        $type -> tasks() -> sync($tasks); //non ho capito questo procedimento
 
         return redirect() -> route('type-show', $type -> id); //non capisco perché qua mettiamo la return mentre nel taskUpdate no
     }
