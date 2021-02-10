@@ -46,6 +46,12 @@ class MainController extends Controller
     public function taskStore(Request $request) {
         $data = $request -> all();
 
+        Validator::make($data, [
+            'title' => 'required|min:5|max:15',
+            'description' => 'required|min:5|max:20',
+            'priority' => 'required'
+        ]) -> validate();
+
         $emp = Employee::findOrFail($data['employee_id']); //mi dà errore dicendomi "undefined index: employee_id" se provo a creare una nuova typology in type/create
         $task = Task::make($request -> all());
         $task -> employee() -> associate($emp); //errore (se provo a creare una nuova task mi dà errore)
@@ -54,6 +60,7 @@ class MainController extends Controller
         $typs = Type::findOrFail($data['types']);
         $task -> types() -> attach($typs);  //aggiungo le righe senza eliminare le relazioni non selezionate
         // dd($task);
+        return redirect() -> route('task-show', $task-> id);
 
     }
 
