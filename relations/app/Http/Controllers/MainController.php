@@ -114,9 +114,11 @@ class MainController extends Controller
     }
 
     public function typeUpdate(Request $request, $id) {
+        
         $data = $request -> all();
         Validator::make($data, [
             'name' => 'required|min:5|max:15',
+            'description' => 'required|min:5|max:20'
         ]) -> validate();
         
         $type = Type::findOrFail($id);

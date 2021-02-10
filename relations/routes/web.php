@@ -57,3 +57,11 @@ Route::post('/type/update/{id}', 'MainController@typeUpdate')
 Route::get('/type/{id}', 'MainController@typeShow') 
 -> name('type-show');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

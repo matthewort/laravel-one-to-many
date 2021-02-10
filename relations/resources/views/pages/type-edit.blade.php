@@ -1,8 +1,7 @@
 @extends('layouts.main-layout')
 @section('content')
-<h1>
-    NEW TYPOLOGY
-</h1>
+<h1>NEW TYPOLOGY</h1>
+
 <form action="{{route('type-update', $type -> id)}}" method="POST">
 
     @csrf
