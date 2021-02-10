@@ -101,6 +101,13 @@ class MainController extends Controller
 
     public function typeStore(Request $request) {
         $data = $request -> all();
+
+        Validator::make($data, [
+            'name' => 'required|min:5|max:15',
+            'description' => 'required|min:5|max:20',
+            'tasks' => 'required'
+        ]) -> validate();
+
         $newType = Type::create($data);
         $tasks = Task::findOrFail($data['tasks']);
         $newType -> tasks() -> attach($tasks);
@@ -110,6 +117,7 @@ class MainController extends Controller
     public function typeEdit($id) {
         $tasks = Task::all();
         $type = Type::findOrFail($id);
+        
         return view('pages.type-edit', compact('tasks','type'));
     }
 
